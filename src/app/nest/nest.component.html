@@ -1,0 +1,42 @@
+<!-- This is the opening div (select your favorite) -->
+<div *ngIf="!this.CurrentNode" class="ChoosePerson">
+    <div class="ErrorMsg">{{this.ErrorMsg}}</div>
+    <select [(ngModel)]="this.SelectedValue" (change)='this.LinkSelected()'>
+        <option value=''>Select your favorite character</option>
+        <option *ngFor='let chr of this.charactersJSON' [value]='chr.url'>{{chr.name}}</option>
+    </select>
+</div>
+
+<!-- Main wrapper for all the other components -->
+<!-- The div will not be shown if the model is not ready -->
+<div class="Component Wrapper" *ngIf="this.CurrentNode && this.ShowAll && this.CurrentNode.LoadComplete">
+
+    <!-- Header Title -->
+    <div class="MainTitle">{{this.CurrentNode.name || this.CurrentNode.title}}
+        <span class="Type">({{this.CurrentNodeType}})</span>
+    </div>
+    <!-- End Header Title -->
+
+    <!-- Description/Details -->
+    <div class="Details Wrapper">
+        <app-details [swapiNode]='this.CurrentNode' [nodeType]='this.CurrentNodeType'></app-details>
+    </div>
+    <!-- End Description/Details -->
+
+    <!-- Table of contents -->
+    <div class="TableContents Wrapper">
+        <app-contents [swapiNode]='this.CurrentNode'></app-contents>
+    </div>
+    <!-- End Table of contents -->
+
+    <!-- Sections -->
+    <!-- These are the section that contain the links -->
+    <div class="Sections Wrapper">
+        <app-section *ngFor='let sec of this.CurrentNode.sections' 
+                     [sectionName]='sec' 
+                     [swapiNode]='this.CurrentNode'>
+        </app-section>
+    </div>
+    <!-- End Sections -->
+
+</div>

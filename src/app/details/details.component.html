@@ -1,0 +1,53 @@
+<!-- This page shows the description details for the various types -->
+<!-- While you can create a factory like with the classes , -->
+<!-- I like to keep this dynamic, giving the ability to modify each type individually -->
+<!-- I only filled in some of the description, but you get the idea. -->
+<div class="Description" *ngIf='this.swapiNode.LoadComplete'>
+        <!-- Film -->
+        <div *ngIf='this.nodeType.toLowerCase() === "film"'>
+                Released on: {{this.swapiNode.formatted_release_date}}, this movie was directed by
+                {{this.swapiNode.director}} and produced by {{this.swapiNode.producer}}
+                <br />
+                The opening crawl goes something like this:
+                <br /><br />
+                {{this.swapiNode.opening_crawl}}
+        </div>
+        <!-- End Film -->
+        
+        <!-- Vehicle -->
+        <div *ngIf='this.nodeType.toLowerCase() === "vehicle"'>
+                This {{this.swapiNode.name}} is {{this.swapiNode.length}} long and can reach atmospheric speeds of
+                {{this.swapiNode.max_atmosphering_speed}}.
+                It can support {{this.swapiNode.crew}} occupant(s) for {{this.swapiNode.consumables}} and has a cargo
+                capacity of {{this.swapiNode.cargo_capacity}}.
+        </div>
+        <!-- End Vehicle -->
+
+        <!-- Starship -->
+        <div *ngIf='this.nodeType.toLowerCase() === "starship"'>
+                The {{this.swapiNode.name}} is manufactured by {{this.swapiNode.manufacturer}} and costs
+                {{this.swapiNode.cost_in_credits}} Cerdits.
+                It has an atmospheric speed of {{this.swapiNode.max_atmosphering_speed}} and a hypderdrive rating of
+                {{this.swapiNode.hyperdrive_rating}}.
+                With a cargo capacity of {{this.swapiNode.cargo_capacity}} units and {{this.swapiNode.passengers}}
+                passengers, the {{this.swapiNode.crew}} can care for this craft for upto {{this.swapiNode.consumables}}
+        </div>
+        <!-- End Starship -->
+
+        <!-- Species -->
+        <div *ngIf='this.nodeType.toLowerCase() === "species" '> Description here </div>
+        <!-- End Species -->
+
+        <!-- Planets -->
+        <div *ngIf='this.nodeType.toLowerCase() === "planets"'>Description here</div>
+        <!-- End Planets -->
+
+        <!-- People -->
+        <div *ngIf='this.nodeType.toLowerCase() === "people"'>
+               {{this.swapiNode.name}} was born on {{this.swapiNode.birth_year}}.<br/>
+               Standing {{this.swapiNode.height}} inches(?) tall with
+                {{this.swapiNode.skin_color}} skin and {{this.swapiNode.eye_color}} eyes.
+        </div>
+        <!-- End People -->
+
+</div>

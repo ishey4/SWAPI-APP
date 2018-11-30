@@ -1,0 +1,6 @@
+
+.Contents.Wrapper{border:1px solid black;padding: 10px 35px 35px 35px;
+                  background:rgba(127,127,127,.1);margin: 20px;}
+.Title{font-size: 35px;border-bottom: 1px  solid black;margin-bottom: 20px;}
+.Entries{font-size: 20px;padding:15px 0px;text-transform: capitalize;}
+.LookLikeLink{cursor: pointer;color:blue; }

@@ -1,0 +1,11 @@
+<!-- this is the table of contents -->
+<div class="Contents Wrapper">
+  <div class="Title">Contents</div>
+  <div *ngIf='this.swapiNode.LoadComplete'>
+    <div *ngFor='let itm of this.swapiNode.sections'>
+      <div class="Entries" *ngIf='this.hasValue(itm)'>
+        <span class="LookLikeLink" (click)="this.ScrollTo(itm)">{{itm}}</span>
+      </div>
+    </div>
+  </div>
+</div>

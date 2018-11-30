@@ -1,0 +1,104 @@
+<!-- This page is the sections that contain all the links -->
+<!-- Again each type has its own area for flexabilty and customizabilty -->
+<div class="ComponentWrapper" *ngIf='this.hasContents()'>
+  <!-- Link to just to that setcion of the page -->
+  <a [id]="this.sectionName"></a>
+  <!-- Section Title -->
+  <div class="Title">{{this.sectionName}}</div>
+
+  <div class="Items">
+
+    <!-- Films -->
+    <div *ngIf='this.sectionName === "films" '>
+      <div>{{this.swapiNode.name}} also appears in:</div>
+      <div *ngFor='let film of this.swapiNode[this.sectionName]'>
+        <a [routerLink]="this.getLink(film['url'])">
+          <span>Episode {{film['episode_id']}}: {{film['title']}}</span>
+        </a>
+        <span>({{film.formatted_release_date}})</span>
+      </div>
+    </div>
+    <!--End Films -->
+
+    <!-- Vehicles -->
+    <div *ngIf='this.sectionName === "vehicles"'>
+      <div *ngFor='let vehicle of this.swapiNode["vehicles"]'>
+        <a [routerLink]="this.getLink(vehicle['url'])">
+          <span>{{vehicle['name']}}</span>
+        </a>
+        <span>({{vehicle.model}})</span>
+      </div>
+    </div>
+    <!-- End Vehicles -->
+
+    <!-- Startships -->
+    <div *ngIf='this.sectionName === "starships"'>
+      <div *ngFor='let ship of this.swapiNode["starships"]'>
+        <a [routerLink]="this.getLink(ship['url'])">
+          <span>{{ship['name']}}</span>
+        </a>
+        <span>({{ship.model}})</span>
+      </div>
+    </div>
+    <!-- End Startships -->
+
+    <!-- Species -->
+    <div *ngIf='this.sectionName === "species" '>
+      <div *ngFor='let specie of this.swapiNode["species"]'>
+        <span>
+          <a [routerLink]="this.getLink(specie['url'])">{{specie.name}}s</a> are {{specie.designation}}
+          {{specie.classification}} that can live to be
+          {{specie.average_lifespan}}.
+        </span>
+      </div>
+    </div>
+    <!-- End Species -->
+
+    <!-- Homeworld -->
+    <div *ngIf='this.sectionName === "homeworld"'>
+      <a [routerLink]="this.getLink(this.swapiNode['homeworld'].url)">
+        {{this.swapiNode["homeworld"].name}}
+      </a>
+    </div>
+    <!-- End Homeworld -->
+
+    <!-- Planets -->
+    <div *ngIf='this.sectionName === "planets"'>
+      <div *ngFor='let planet of this.swapiNode["planets"]'>
+        <span>
+          <a [routerLink]="this.getLink(planet['url'])">{{planet.name}}s</a>
+        </span>
+      </div>
+    </div>
+    <!--End Planets -->
+
+    <!-- Characters -->
+    <div *ngIf='this.sectionName === "characters"'>
+      <div *ngFor='let character of this.swapiNode["characters"]'>
+        <span>
+          <a [routerLink]="this.getLink(character['url'])">{{character.name}}s</a>
+        </span>
+      </div>
+    </div>
+    <!-- End Characters -->
+
+    <!-- Pilots -->
+    <div *ngIf='this.sectionName === "pilots"'>
+      <div *ngFor='let pilot of this.swapiNode["pilots"]'>
+        <a [routerLink]="this.getLink(pilot['url'])"><span>{{pilot['name']}}</span></a>
+      </div>
+    </div>
+    <!--End Pilots -->
+
+    <!-- Residents  -->
+    <div *ngIf='this.sectionName === "people" || this.sectionName === "residents"'>
+      <div *ngFor='let peep of this.swapiNode["people"] || this.swapiNode["residents"]'>
+        <span>
+          <a [routerLink]="this.getLink(peep['url'])">{{peep.name}}s</a>
+        </span>
+      </div>
+    </div>
+    <!-- End Residents -->
+    
+  </div>
+</div>

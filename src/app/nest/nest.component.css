@@ -1,0 +1,9 @@
+.MainTitle{font-size: 75px;padding:10px 0px;border-bottom: 1px solid gray;}
+.Component.Wrapper{margin:0px 30px;width:calc(100% - 60px);margin:30px;}
+.Wrapper{display: block;width:100%;}
+.Sections{max-width:650px;}
+.TableContents{max-width:350px;}
+.ChoosePerson{top: 20%;width: 100%;text-align: center;position: absolute;}
+select{font-size: 35px; width: 50%;}
+.ErrorMsg{font-size: 35px;color:red;margin-bottom: 25px;}
+.Type{font-size: 30px;margin: 0px 20px;}
