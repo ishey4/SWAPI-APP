@@ -51,6 +51,7 @@ export class NestComponent implements OnInit,OnDestroy {
         this.CurrentNode = this.swapi.Instanciator(data.obj, link)
         this.CurrentNodeType=this.CurrentNode.constructor.name;
         console.log(this.CurrentNode)
+        window.scrollTo(0,0);
         this.ShowAll=true;
       }
     })
